@@ -55,7 +55,6 @@
   .dot{color:var(--red)}
   .tag{display:inline-block;background:var(--red);color:#fff;font-family:'Heebo';font-weight:900;
     line-height:1;padding:.18em .45em .24em;transform:rotate(-2deg);vertical-align:middle}
-  .eyebrow{font-size:14px;font-weight:700;letter-spacing:.5px;text-transform:uppercase}
   section{padding:72px 0}
 
   /* ---------- כפתורים ---------- */
@@ -72,11 +71,8 @@
   .hero{background:radial-gradient(1100px 700px at 50% 30%,var(--night-2),var(--night) 70%);
     color:#fff;padding:28px 0 64px;text-align:center}
   .hero .logo{width:180px;margin:0 auto 34px}
-  .hero .eyebrow{color:#fff;opacity:.8;margin-bottom:14px}
-  .hero .eyebrow span{color:var(--red);margin:0 6px}
   .hero h1{font-size:clamp(84px,18vw,150px)}
   .hero .lead{max-width:640px;margin:18px auto 30px;font-size:clamp(18px,2.4vw,21px);opacity:.92}
-  .hero .lead b{border-bottom:3px solid var(--red)}
 
   .video{position:relative;max-width:860px;margin:0 auto 34px;aspect-ratio:16/9;border-radius:var(--radius);
     overflow:hidden;background:#000;box-shadow:0 30px 70px rgba(0,0,0,.5)}
@@ -93,9 +89,6 @@
   .video .cap strong{display:block;font-family:'Karantina';font-size:40px;line-height:.9}
   .video .cap small{font-size:14px;opacity:.85}
 
-  .facts{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin-top:34px}
-  .facts li{list-style:none;border:1px solid rgba(255,255,255,.22);border-radius:99px;
-    padding:7px 16px;font-size:15px;font-weight:500}
 
   /* ---------- להיות או לא להיות ---------- */
   .tobe{text-align:center;border-top:6px solid var(--red)}
@@ -154,6 +147,8 @@
   .form-sec{background:radial-gradient(900px 600px at 50% 0,var(--night-2),var(--night) 70%);color:#fff}
   .form-box{max-width:560px;margin:0 auto;background:#fff;color:var(--ink);border-radius:20px;
     padding:34px 28px 28px;box-shadow:0 30px 80px rgba(0,0,0,.45)}
+  .form-mid{background:#fff}
+  .form-mid .form-box{border:2px solid var(--ink);border-top:6px solid var(--red);box-shadow:0 18px 50px rgba(29,21,32,.12)}
   .form-box h2{font-size:clamp(56px,10vw,80px);text-align:center}
   .form-box .sub{text-align:center;color:var(--muted);margin:10px 0 24px}
   .field{margin-bottom:16px}
@@ -222,24 +217,16 @@
 <header class="hero">
   <div class="wrap">
     <img class="logo" src="assets/logo-white.png" alt="הסטודיו – בית הספר למשחק" width="290" height="137">
-    <p class="eyebrow">מסלול בוגרים<span>•</span>18+<span>•</span>תל אביב</p>
     <h1 class="display">רוצה לשחק<span class="dot">?</span></h1>
-    <p class="lead">גל אמיתי, מייסד הסטודיו, לוקח אתכם לסיבוב מבפנים: מי מלמד, איך נראה שיעור, ומה קורה בששת החודשים של מסלול הבוגרים. <b>שווה לראות לפני שמחליטים.</b></p>
+    <p class="lead">גל אמיתי, מייסד הסטודיו, לוקח אתכם לסיבוב מבפנים: מי מלמד, איך נראה שיעור, ומה קורה בששת החודשים של מסלול הבוגרים.</p>
 
     <div class="video" id="video">
       <img src="assets/gal-portrait.jpg" alt="גל אמיתי, מייסד הסטודיו" width="1400" height="778" fetchpriority="high">
       <div class="cap"><strong>גל אמיתי</strong><small>מייסד הסטודיו, שחקן ומנחה</small></div>
     </div>
 
-    <a class="btn" href="#form" data-cta="hero">אני רוצה לשמוע פרטים <span class="arr">←</span></a>
+    <a class="btn" href="#form-mid" data-cta="hero">אני רוצה לשמוע פרטים <span class="arr">←</span></a>
     <p class="micro">השארת פרטים לא מחייבת. יועץ/ת מהסטודיו יחזרו אליכם.</p>
-
-    <ul class="facts">
-      <li>גילאי 18+</li>
-      <li>6 חודשים</li>
-      <li>יגיע כפיים 2, תל אביב</li>
-      <li>המורים: שחקנים פעילים</li>
-    </ul>
   </div>
 </header>
 
@@ -280,6 +267,37 @@
         <h3>חן אמסלם</h3>
         <div class="role">שחקנית</div>
         <p>״שיער״ בתיאטרון הקאמרי, ״זגורי אימפריה״.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ טופס באמצע ============ -->
+<section class="form-mid" id="form-mid">
+  <div class="wrap">
+    <div class="form-box">
+      <form class="lead-form" data-position="mid" novalidate>
+        <h2 class="display">רוצה לשמוע עוד<span class="dot">?</span></h2>
+        <p class="sub">משאירים שם וטלפון, ויועץ/ת מהסטודיו יחזרו אליכם.</p>
+        <div class="field f-name">
+          <label for="name-mid">שם מלא</label>
+          <input type="text" id="name-mid" name="name" autocomplete="name" required>
+          <div class="msg">נשמח לדעת איך קוראים לך</div>
+        </div>
+        <div class="field f-phone">
+          <label for="phone-mid">טלפון נייד</label>
+          <input type="tel" id="phone-mid" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000" required dir="ltr" style="text-align:right">
+          <div class="msg">צריך מספר נייד תקין</div>
+        </div>
+        <label class="consent"><input type="checkbox" name="marketing" value="yes">
+          <span>אשמח לקבל מהסטודיו עדכונים, תכנים ומבצעים בוואטסאפ, SMS ומייל.</span></label>
+        <div class="hp" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">שלחו לי פרטים <span class="arr">←</span></button>
+        <div class="form-err">משהו השתבש. נסו שוב, או התקשרו 1700-077-270</div>
+      </form>
+      <div class="thanks" role="status" aria-live="polite">
+        <h2 class="display">קיבלנו<span class="dot">!</span></h2>
+        <p>יועץ/ת מהסטודיו יחזרו אליכם בקרוב.</p>
       </div>
     </div>
   </div>
@@ -338,17 +356,17 @@
 <!-- ============ טופס ============ -->
 <section class="form-sec" id="form">
   <div class="wrap">
-    <div class="form-box" id="formBox">
-      <form id="leadForm" novalidate>
+    <div class="form-box">
+      <form class="lead-form" data-position="bottom" novalidate>
         <h2 class="display">בואו נדבר<span class="dot">.</span></h2>
         <p class="sub">משאירים פרטים, ויועץ/ת מהסטודיו יחזרו אליכם.</p>
 
-        <div class="field" id="f-name">
+        <div class="field f-name">
           <label for="name">שם מלא</label>
           <input type="text" id="name" name="name" autocomplete="name" required>
           <div class="msg">נשמח לדעת איך קוראים לך</div>
         </div>
-        <div class="field" id="f-phone">
+        <div class="field f-phone">
           <label for="phone">טלפון נייד</label>
           <input type="tel" id="phone" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000" required dir="ltr" style="text-align:right">
           <div class="msg">צריך מספר נייד תקין</div>
@@ -365,8 +383,8 @@
           <span>אשמח לקבל מהסטודיו עדכונים, תכנים ומבצעים בוואטסאפ, SMS ומייל.</span></label>
         <div class="hp" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
 
-        <button class="btn" type="submit" id="submitBtn">שלחו לי פרטים <span class="arr">←</span></button>
-        <div class="form-err" id="formErr">משהו השתבש. נסו שוב, או התקשרו 1700-077-270</div>
+        <button class="btn" type="submit">שלחו לי פרטים <span class="arr">←</span></button>
+        <div class="form-err">משהו השתבש. נסו שוב, או התקשרו 1700-077-270</div>
         <p class="privacy">הפרטים נשמרים אצל הסטודיו בלבד ומשמשים כדי לחזור אליכם.</p>
       </form>
       <div class="thanks" role="status" aria-live="polite">
@@ -462,20 +480,27 @@
 
   /* ---------- CTA דביק: מופיע אחרי ההירו, נעלם ליד הטופס ---------- */
   var sticky = document.getElementById("sticky");
-  var hero = document.querySelector(".hero"), formSec = document.getElementById("form");
-  var heroOut = false, formIn = false;
-  function upd(){ sticky.classList.toggle("show", heroOut && !formIn); }
+  var hero = document.querySelector(".hero");
+  var formSecs = [document.getElementById("form-mid"), document.getElementById("form")];
+  var heroOut = false, formsIn = {}, submitted = false;
+  function upd(){
+    var anyIn = Object.keys(formsIn).some(function(k){ return formsIn[k]; });
+    sticky.classList.toggle("show", heroOut && !anyIn && !submitted);
+  }
   if("IntersectionObserver" in window){
     new IntersectionObserver(function(e){ heroOut = !e[0].isIntersecting; upd(); }).observe(hero);
-    new IntersectionObserver(function(e){ formIn = e[0].isIntersecting; upd(); }, {rootMargin:"0px 0px -30% 0px"}).observe(formSec);
+    var fio = new IntersectionObserver(function(es){
+      es.forEach(function(e){ formsIn[e.target.id] = e.isIntersecting; }); upd();
+    }, {rootMargin:"0px 0px -30% 0px"});
+    formSecs.forEach(function(s){ fio.observe(s); });
   }
+  /* הכפתור הדביק מוביל לטופס הקרוב שעוד לפנינו */
+  sticky.querySelector("[data-cta=sticky]").addEventListener("click", function(ev){
+    var next = formSecs.filter(function(s){ return s.getBoundingClientRect().top > 0; })[0] || formSecs[formSecs.length-1];
+    ev.preventDefault(); next.scrollIntoView({behavior:"smooth"});
+  });
 
-  /* ---------- טופס ---------- */
-  var form = document.getElementById("leadForm");
-  var formBox = document.getElementById("formBox");
-  var errBox = document.getElementById("formErr");
-  var submitBtn = document.getElementById("submitBtn");
-
+  /* ---------- טפסים (באמצע ובסוף, אותו קוד) ---------- */
   function normPhone(v){
     var d = v.replace(/\D/g,"");
     if(d.indexOf("972") === 0) d = "0" + d.slice(3);
@@ -483,14 +508,19 @@
   }
   function validPhone(d){ return /^05\d{8}$/.test(d); }
 
+  document.querySelectorAll("form.lead-form").forEach(function(form){
+  var formBox = form.closest(".form-box");
+  var errBox = form.querySelector(".form-err");
+  var submitBtn = form.querySelector("button[type=submit]");
+
   form.addEventListener("submit", function(ev){
     ev.preventDefault();
     errBox.style.display = "none";
     var name = form.name.value.trim();
     var phone = normPhone(form.phone.value);
     var okName = name.length >= 2, okPhone = validPhone(phone);
-    document.getElementById("f-name").classList.toggle("err", !okName);
-    document.getElementById("f-phone").classList.toggle("err", !okPhone);
+    form.querySelector(".f-name").classList.toggle("err", !okName);
+    form.querySelector(".f-phone").classList.toggle("err", !okPhone);
     if(!okName){ form.name.focus(); return; }
     if(!okPhone){ form.phone.focus(); return; }
     if(form.company.value) return; // בוט
@@ -502,6 +532,7 @@
       phone: phone,
       callback_time: cb ? cb.value : "",
       marketing_consent: form.marketing.checked,
+      form_position: form.dataset.position,
       course: "מסלול בוגרים",
       page: C.PAGE_NAME,
       page_url: location.href.split("#")[0],
@@ -514,8 +545,10 @@
     for(var k in attribution) payload[k] = attribution[k];
 
     function done(){
-      formBox.classList.add("done");
-      track("Lead", {content_name: C.PAGE_NAME}, {eventID: eventId});
+      submitted = true; upd();
+      /* אחרי ליד אחד, שני הטפסים מציגים ״קיבלנו״ */
+      document.querySelectorAll(".form-box").forEach(function(b){ b.classList.add("done"); });
+      track("Lead", {content_name: C.PAGE_NAME, form_position: form.dataset.position}, {eventID: eventId});
       formBox.scrollIntoView({behavior:"smooth", block:"center"});
     }
 
@@ -530,6 +563,7 @@
         errBox.style.display = "block";
         submitBtn.disabled = false; submitBtn.style.opacity = 1;
       });
+  });
   });
 
   /* ---------- מעקב לחיצות על CTA ---------- */

@@ -273,7 +273,7 @@
 </section>
 
 <!-- ============ טופס באמצע ============ -->
-<section class="form-mid" id="form-mid">
+<section class="form-mid" id="form-mid" data-form-sec>
   <div class="wrap">
     <div class="form-box">
       <form class="lead-form" data-position="mid" novalidate>
@@ -323,6 +323,37 @@
   </div>
 </section>
 
+<!-- ============ צור קשר (אחרי הבוגרים) ============ -->
+<section class="form-mid" id="form-contact" data-form-sec>
+  <div class="wrap">
+    <div class="form-box">
+      <form class="lead-form" data-position="contact" novalidate>
+        <h2 class="display">צרו קשר<span class="dot">.</span></h2>
+        <p class="sub">השאירו פרטים, ויועץ/ת מהסטודיו יחזרו אליכם לשיחה קצרה.</p>
+        <div class="field f-name">
+          <label for="name-contact">שם מלא</label>
+          <input type="text" id="name-contact" name="name" autocomplete="name" required>
+          <div class="msg">נשמח לדעת איך קוראים לך</div>
+        </div>
+        <div class="field f-phone">
+          <label for="phone-contact">טלפון נייד</label>
+          <input type="tel" id="phone-contact" name="phone" autocomplete="tel" inputmode="tel" placeholder="050-0000000" required dir="ltr" style="text-align:right">
+          <div class="msg">צריך מספר נייד תקין</div>
+        </div>
+        <label class="consent"><input type="checkbox" name="marketing" value="yes">
+          <span>אשמח לקבל מהסטודיו עדכונים, תכנים ומבצעים בוואטסאפ, SMS ומייל.</span></label>
+        <div class="hp" aria-hidden="true"><input type="text" name="company" tabindex="-1" autocomplete="off"></div>
+        <button class="btn" type="submit">שלחו לי פרטים <span class="arr">←</span></button>
+        <div class="form-err">משהו השתבש. נסו שוב, או התקשרו 1700-077-270</div>
+      </form>
+      <div class="thanks" role="status" aria-live="polite">
+        <h2 class="display">קיבלנו<span class="dot">!</span></h2>
+        <p>יועץ/ת מהסטודיו יחזרו אליכם בקרוב.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <!-- ============ איך זה עובד ============ -->
 <section>
   <div class="wrap">
@@ -354,7 +385,7 @@
 </section>
 
 <!-- ============ טופס ============ -->
-<section class="form-sec" id="form">
+<section class="form-sec" id="form" data-form-sec>
   <div class="wrap">
     <div class="form-box">
       <form class="lead-form" data-position="bottom" novalidate>
@@ -481,7 +512,7 @@
   /* ---------- CTA דביק: מופיע אחרי ההירו, נעלם ליד הטופס ---------- */
   var sticky = document.getElementById("sticky");
   var hero = document.querySelector(".hero");
-  var formSecs = [document.getElementById("form-mid"), document.getElementById("form")];
+  var formSecs = [].slice.call(document.querySelectorAll("[data-form-sec]"));
   var heroOut = false, formsIn = {}, submitted = false;
   function upd(){
     var anyIn = Object.keys(formsIn).some(function(k){ return formsIn[k]; });

@@ -16,14 +16,16 @@
 
 <!--
   ===================== הגדרות (למלא לפני שעולים לאוויר) =====================
-  VIDEO_URL   קישור לסרטון של גל: YouTube / Vimeo / קובץ mp4. ריק = מוצגת תמונה של גל בלי כפתור ניגון.
+  VIDEO_URL   קישור לסרטון של גל: YouTube / Vimeo / פייסבוק / קובץ mp4. ריק = מוצגת תמונה של גל בלי כפתור ניגון.
+              סרטון מפייסבוק נטען מיד במקום התמונה (בלי כפתור ניגון שלנו). VIDEO_VERTICAL: true = מסגרת אנכית 9:16.
   WEBHOOK_URL כתובת ה‑webhook (למשל Make) שמקבלת את הליד כ‑JSON. ריק = הטופס לא נשלח לשום מקום (מצב בדיקה).
   PIXEL_ID    פיקסל המטא של הסטודיו. ריק = בלי פיקסל.
   ==========================================================================
 -->
 <script>
   window.LP_CONFIG = {
-    VIDEO_URL:   "",
+    VIDEO_URL:   "https://www.facebook.com/GalAmitaiStudio/videos/3597421777091616/",
+    VIDEO_VERTICAL: true,
     WEBHOOK_URL: "",
     PIXEL_ID:    "",
     PAGE_NAME:   "VSL מסלול בוגרים"
@@ -88,6 +90,7 @@
   .video .cap{position:absolute;right:20px;bottom:16px;color:#fff;text-align:right;pointer-events:none;text-shadow:0 1px 3px rgba(0,0,0,.55),0 2px 16px rgba(0,0,0,.45)}
   .video .cap strong{display:block;font-family:'Karantina';font-size:40px;line-height:.9}
   .video .cap small{font-size:14px;opacity:.85}
+  .video.vertical{aspect-ratio:9/16;max-width:min(400px,82vw)}
 
 
   /* ---------- להיות או לא להיות ---------- */
@@ -206,6 +209,7 @@
     .hero .logo{width:150px;margin-bottom:26px}
     .video{margin-left:-20px;margin-right:-20px;border-radius:0}
     .video .cap strong{font-size:32px}
+    .video.vertical{margin-left:auto;margin-right:auto;border-radius:var(--radius)}
     .form-box{padding:28px 18px 22px}
   }
   @media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
@@ -476,9 +480,18 @@
     var m;
     if((m = u.match(/(?:youtu\.be\/|v=|shorts\/|embed\/)([\w-]{11})/))) return {type:"iframe", src:"https://www.youtube-nocookie.com/embed/"+m[1]+"?autoplay=1&rel=0&playsinline=1"};
     if((m = u.match(/vimeo\.com\/(?:video\/)?(\d+)/))) return {type:"iframe", src:"https://player.vimeo.com/video/"+m[1]+"?autoplay=1&playsinline=1"};
+    if(/facebook\.com|fb\.watch/.test(u)) return {type:"iframe", fb:true, src:"https://www.facebook.com/plugins/video.php?href="+encodeURIComponent(u)+"&show_text=false&width=400"};
     return {type:"video", src:u};
   }
-  if(C.VIDEO_URL){
+  if(C.VIDEO_VERTICAL) box.classList.add("vertical");
+  if(C.VIDEO_URL && embedUrl(C.VIDEO_URL).fb){
+    /* פייסבוק: הנגן של פייסבוק מחליף את התמונה מיד, עם כפתור הניגון שלו */
+    var fb = document.createElement("iframe");
+    fb.src = embedUrl(C.VIDEO_URL).src;
+    fb.allow = "autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"; fb.allowFullscreen = true;
+    fb.scrolling = "no"; fb.title = "גל אמיתי מציג את הסטודיו";
+    box.innerHTML = ""; box.appendChild(fb);
+  }else if(C.VIDEO_URL){
     var btn = document.createElement("button");
     btn.className = "play"; btn.type = "button"; btn.setAttribute("aria-label","ניגון הסרטון של גל");
     btn.innerHTML = "<i></i>";
